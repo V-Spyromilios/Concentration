@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF300009293E69C000AFC124 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF300008293E69C000AFC124 /* Concentration.swift */; };
+		EF30000B293E69DE00AFC124 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30000A293E69DE00AFC124 /* Card.swift */; };
 		EF30FFF3293DF14900AFC124 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30FFF2293DF14900AFC124 /* AppDelegate.swift */; };
 		EF30FFF5293DF14900AFC124 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30FFF4293DF14900AFC124 /* SceneDelegate.swift */; };
 		EF30FFF7293DF14900AFC124 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF30FFF6293DF14900AFC124 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		EF300000293DF14A00AFC124 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF300008293E69C000AFC124 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		EF30000A293E69DE00AFC124 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		EF30FFEF293DF14900AFC124 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF30FFF2293DF14900AFC124 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF30FFF4293DF14900AFC124 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 			children = (
 				EF300007293DF2E900AFC124 /* Supporting Files */,
 				EF30FFF4293DF14900AFC124 /* SceneDelegate.swift */,
+				EF30000A293E69DE00AFC124 /* Card.swift */,
+				EF300008293E69C000AFC124 /* Concentration.swift */,
 				EF30FFF6293DF14900AFC124 /* ViewController.swift */,
 				EF30FFF8293DF14900AFC124 /* Main.storyboard */,
 				EF300000293DF14A00AFC124 /* Info.plist */,
@@ -147,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF30FFF7293DF14900AFC124 /* ViewController.swift in Sources */,
+				EF300009293E69C000AFC124 /* Concentration.swift in Sources */,
+				EF30000B293E69DE00AFC124 /* Card.swift in Sources */,
 				EF30FFF3293DF14900AFC124 /* AppDelegate.swift in Sources */,
 				EF30FFF5293DF14900AFC124 /* SceneDelegate.swift in Sources */,
 			);

@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 	
+	let game = Concentration()
+	
 	var score = 0 {
 		didSet {
 			scoreCounterOutlet.text = "Score: \(score)"
