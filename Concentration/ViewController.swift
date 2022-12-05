@@ -9,12 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
 	
+	var score = 0 {
+		didSet {
+			scoreCounterOutlet.text = "Score: \(score)"
+		}
+	}
+	var lastPressedButton: UIButton? = nil
 	var flipCounter = 0 {
 		didSet {
 			flipCounterView.text = "Flips: \(flipCounter)"
 		}
 	}
 	
+	@IBOutlet var scoreCounterOutlet: UILabel!
 	@IBOutlet var buttonsArray: [UIButton]!
 	@IBOutlet var flipCounterView: UILabel!
 	let emojiArray = ["📱", "👻", "💣", "😎", "🎉","📱", "👻", "💣", "😎", "🎉"]
@@ -27,13 +34,18 @@ class ViewController: UIViewController {
 			let emoji = emojiArray[cardNumber]
 			flipCard(withEmoji: emoji, on: sender)
 		} else {
-			let emoji = emojiArray[0]
-			flipCard(withEmoji: emoji, on: sender)
+			print("ERROR: Card not found on Buttons Array")
 		}
+
+		if lastPressedButton?.currentTitle == sender.currentTitle {
+			score += 1
+		}
+		lastPressedButton = sender
 	}
 	
 	
 	func flipCard(withEmoji emoji: String, on button: UIButton) {
+
 		if button.currentTitle == emoji {
 			button.setTitle("", for: .normal)
 			button.backgroundColor = .orange
@@ -59,7 +71,6 @@ class ViewController: UIViewController {
 		}
 	}
 }
-	
 //	override func viewDidLoad() {
 //		super.viewDidLoad()
 //		setEmojis(with: emojiArray, to: buttonsArray)
