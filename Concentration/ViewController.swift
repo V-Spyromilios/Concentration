@@ -14,7 +14,6 @@ class ViewController: UIViewController {
 			scoreCounterOutlet.text = "Score: \(score)"
 		}
 	}
-	var lastPressedButton: UIButton? = nil
 	var flipCounter = 0 {
 		didSet {
 			flipCounterView.text = "Flips: \(flipCounter)"
@@ -25,6 +24,7 @@ class ViewController: UIViewController {
 	@IBOutlet var buttonsArray: [UIButton]!
 	@IBOutlet var flipCounterView: UILabel!
 	let emojiArray = ["📱", "👻", "💣", "😎", "🎉","📱", "👻", "💣", "😎", "🎉"]
+	var lastPressedButton: UIButton? = nil
 	
 	
 	
@@ -39,6 +39,10 @@ class ViewController: UIViewController {
 
 		if lastPressedButton?.currentTitle == sender.currentTitle {
 			score += 1
+		}
+		else {
+			lastPressedButton?.setTitle("", for: .normal)
+			lastPressedButton?.backgroundColor = .orange
 		}
 		lastPressedButton = sender
 	}
