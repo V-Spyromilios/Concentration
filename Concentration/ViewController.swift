@@ -30,13 +30,17 @@ class ViewController: UIViewController {
 	
 	@IBAction func pressButton(_ sender: UIButton) {
 		flipCounter += 1
+		if flipCounter == buttonsArray.count {
+			print("GAME OVER!")
+			// TODO: - Add Game Over View
+		}
 		if let cardNumber = buttonsArray.firstIndex(of: sender) {
 			let emoji = emojiArray[cardNumber]
 			flipCard(withEmoji: emoji, on: sender)
 		} else {
 			print("ERROR: Card not found on Buttons Array")
 		}
-
+		
 		if lastPressedButton?.currentTitle == sender.currentTitle {
 			score += 1
 		}
@@ -49,7 +53,7 @@ class ViewController: UIViewController {
 	
 	
 	func flipCard(withEmoji emoji: String, on button: UIButton) {
-
+		
 		if button.currentTitle == emoji {
 			button.setTitle("", for: .normal)
 			button.backgroundColor = .orange
@@ -59,22 +63,22 @@ class ViewController: UIViewController {
 			button.backgroundColor = .white
 		}
 	}
-	
-	func setEmojis(with emojiArray: [String], to buttons: [UIButton]) {
-		var emojiLen = emojiArray.count - 1
-		var buttonIndex = buttons.count - 1
-		
-		while emojiLen >= 0 && buttonIndex >= 0 {
-			buttons[buttonIndex].setTitle(emojiArray[emojiLen], for: .normal)
-			buttonIndex -= 1
-			emojiLen -= 1
-			if buttonIndex < 0 { break }
-			else if emojiLen < 0 {
-				emojiLen = emojiArray.count
-			}
-		}
-	}
 }
+//	func setEmojis(with emojiArray: [String], to buttons: [UIButton]) {
+//		var emojiLen = emojiArray.count - 1
+//		var buttonIndex = buttons.count - 1
+//
+//		while emojiLen >= 0 && buttonIndex >= 0 {
+//			buttons[buttonIndex].setTitle(emojiArray[emojiLen], for: .normal)
+//			buttonIndex -= 1
+//			emojiLen -= 1
+//			if buttonIndex < 0 { break }
+//			else if emojiLen < 0 {
+//				emojiLen = emojiArray.count
+//			}
+//		}
+//	}
+//}
 //	override func viewDidLoad() {
 //		super.viewDidLoad()
 //		setEmojis(with: emojiArray, to: buttonsArray)
