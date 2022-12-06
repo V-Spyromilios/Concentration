@@ -8,65 +8,69 @@
 import UIKit
 
 class ViewController: UIViewController {
+
+let game = Concentration(numberOfPairsOfCards: 5)
+
+var score = 0 {
+	didSet {
+		scoreCounterOutlet.text = "Score: \(score)"
+	}
+}
+
+var flipCounter = 0 {
+	didSet {
+		flipCounterView.text = "Flips: \(flipCounter)"
+	}
+}
+
+@IBOutlet var scoreCounterOutlet: UILabel!
+@IBOutlet var buttonsArray: [UIButton]!
+@IBOutlet var flipCounterView: UILabel!
+
+let emojiArray = ["📱", "👻", "💣", "😎", "🎉","📱", "👻", "💣", "😎", "🎉"]
+var lastPressedButton: UIButton? = nil
+
+
+@IBAction func pressButton(_ sender: UIButton) {
+	flipCounter += 1
+	if flipCounter == buttonsArray.count {
+		print("GAME OVER!")
+		// TODO: - Add Game Over View
+	}
+	if let cardNumber = buttonsArray.firstIndex(of: sender) {
+		let emoji = emojiArray[cardNumber]
+		flipCard(withEmoji: emoji, on: sender)
+	} else {
+		print("ERROR: Card not found on Buttons Array")
+	}
 	
-	let game = Concentration(numberOfPairsOfCards: 5)
-
-	var score = 0 {
-		didSet {
-			scoreCounterOutlet.text = "Score: \(score)"
-		}
+	if lastPressedButton?.currentTitle == sender.currentTitle {
+		score += 1
 	}
 
-	var flipCounter = 0 {
-		didSet {
-			flipCounterView.text = "Flips: \(flipCounter)"
-		}
-	}
+	lastPressedButton = sender
+}
+
+
+func flipCard(withEmoji emoji: String, on button: UIButton) {
 	
-	@IBOutlet var scoreCounterOutlet: UILabel!
-	@IBOutlet var buttonsArray: [UIButton]!
-	@IBOutlet var flipCounterView: UILabel!
-
-	let emojiArray = ["📱", "👻", "💣", "😎", "🎉","📱", "👻", "💣", "😎", "🎉"]
-	var lastPressedButton: UIButton? = nil
-
-
-	@IBAction func pressButton(_ sender: UIButton) {
-		flipCounter += 1
-		if flipCounter == buttonsArray.count {
-			print("GAME OVER!")
-			// TODO: - Add Game Over View
-		}
-		if let cardNumber = buttonsArray.firstIndex(of: sender) {
-			let emoji = emojiArray[cardNumber]
-			flipCard(withEmoji: emoji, on: sender)
-		} else {
-			print("ERROR: Card not found on Buttons Array")
-		}
-		
-		if lastPressedButton?.currentTitle == sender.currentTitle {
-			score += 1
-		}
-
-		lastPressedButton = sender
+	if button.currentTitle == emoji {
+		hideCard(card: button)
 	}
-
-
-	func flipCard(withEmoji emoji: String, on button: UIButton) {
-		
-		if button.currentTitle == emoji {
-			hideCard(card: button)
-		}
-		else {
-			button.setTitle(emoji, for: .normal)
-			button.backgroundColor = .white
-		}
+	else {
+		revealCard(show: emoji, card: button)
 	}
+}
 }
 
 func hideCard(card: UIButton) {
 	card.setTitle("", for: .normal)
 	card.backgroundColor = .orange
+}
+
+func revealCard(show emoji: String, card: UIButton) {
+	card.setTitle(emoji, for: .normal)
+	card.backgroundColor = .white
 }
 //	func setEmojis(with emojiArray: [String], to buttons: [UIButton]) {
 //		var emojiLen = emojiArray.count - 1
