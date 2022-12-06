@@ -12,6 +12,7 @@ class Concentration
 	var cards = [Card]()
 	
 	var indexOfOneCardFaceUp: Int?
+	var randomArray = [Int]()
 
 	func chooseCard(at index: Int) {
 		if !cards[index].isMatched {
@@ -34,12 +35,14 @@ class Concentration
 		}
 	}
 
-	//TODO: - shuffleTheCards() !
 	init(numberOfPairsOfCards: Int) {
-		for _ in 0..<numberOfPairsOfCards {
+		let counter = numberOfPairsOfCards - 1
+		for _ in 0...counter {
 			let card = Card()
 			cards.append(card)
-			cards.append(card) // 	As  struct  is Copy Type.
-		}
+			cards.append(card)
+			}
+		cards.shuffle()
 	}
 }
+

@@ -9,7 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
 	
-	lazy var game = Concentration(numberOfPairsOfCards: (buttonsArray.count) / 2)
+	var numberOfPairs: Int {  return buttonsArray.count % 2 == 0 ? buttonsArray.count / 2 : buttonsArray.count + 1 / 2 }
+	
+	lazy var game = Concentration(numberOfPairsOfCards: numberOfPairs )
 	
 	var score = 0 {
 		didSet {
@@ -41,7 +43,7 @@ class ViewController: UIViewController {
 		}
 	}
 	
-	
+
 	func updateViewFromModel() {
 		for index in buttonsArray.indices {
 			let button = buttonsArray[index]
@@ -57,15 +59,12 @@ class ViewController: UIViewController {
 			}
 		}
 	}
-	
+
 	func chooseEmoji(for card: Card) -> String {
 		if emojiDict[card.identifier] == nil, emojiArray.count > 0 {
-			print("BIKE")
 			let randomInt = Int( arc4random_uniform(UInt32(emojiArray.count)) )
-			emojiDict[card.identifier] = emojiArray.remove(at: randomInt) // remove returns the removed
+			emojiDict[card.identifier] = emojiArray.remove(at: randomInt) //  .remove returns the removed
 		}
-		print("ChooseEmoji()")
-		print("\(String(describing: emojiDict[card.identifier]))")
 		return emojiDict[card.identifier] ?? "NIL"
 	}
 
