@@ -9,13 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 	
-	let game = Concentration()
-	
+	let game = Concentration(numberOfPairsOfCards: 5)
+
 	var score = 0 {
 		didSet {
 			scoreCounterOutlet.text = "Score: \(score)"
 		}
 	}
+
 	var flipCounter = 0 {
 		didSet {
 			flipCounterView.text = "Flips: \(flipCounter)"
@@ -25,11 +26,11 @@ class ViewController: UIViewController {
 	@IBOutlet var scoreCounterOutlet: UILabel!
 	@IBOutlet var buttonsArray: [UIButton]!
 	@IBOutlet var flipCounterView: UILabel!
+
 	let emojiArray = ["📱", "👻", "💣", "😎", "🎉","📱", "👻", "💣", "😎", "🎉"]
 	var lastPressedButton: UIButton? = nil
-	
-	
-	
+
+
 	@IBAction func pressButton(_ sender: UIButton) {
 		flipCounter += 1
 		if flipCounter == buttonsArray.count {
@@ -46,10 +47,7 @@ class ViewController: UIViewController {
 		if lastPressedButton?.currentTitle == sender.currentTitle {
 			score += 1
 		}
-		else {
-			lastPressedButton?.setTitle("", for: .normal)
-			lastPressedButton?.backgroundColor = .orange
-		}
+
 		lastPressedButton = sender
 	}
 	
@@ -57,14 +55,18 @@ class ViewController: UIViewController {
 	func flipCard(withEmoji emoji: String, on button: UIButton) {
 		
 		if button.currentTitle == emoji {
-			button.setTitle("", for: .normal)
-			button.backgroundColor = .orange
+			hideCard(card: button)
 		}
 		else {
 			button.setTitle(emoji, for: .normal)
 			button.backgroundColor = .white
 		}
 	}
+}
+
+func hideCard(card: UIButton) {
+	card.setTitle("", for: .normal)
+	card.backgroundColor = .orange
 }
 //	func setEmojis(with emojiArray: [String], to buttons: [UIButton]) {
 //		var emojiLen = emojiArray.count - 1
