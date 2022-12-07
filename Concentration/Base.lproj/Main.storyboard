@@ -30,7 +30,8 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=""/>
-                                                <buttonConfiguration key="configuration" style="filled" title="">
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle"/>
                                                     <attributedString key="attributedSubtitle"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -44,7 +45,8 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=""/>
-                                                <buttonConfiguration key="configuration" style="filled" title="">
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle"/>
                                                     <attributedString key="attributedSubtitle"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -58,7 +60,8 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=""/>
-                                                <buttonConfiguration key="configuration" style="filled" title="">
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle"/>
                                                     <attributedString key="attributedSubtitle"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -72,7 +75,8 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=""/>
-                                                <buttonConfiguration key="configuration" style="filled" title="">
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle"/>
                                                     <attributedString key="attributedSubtitle"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -86,7 +90,8 @@
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title=""/>
-                                                <buttonConfiguration key="configuration" style="filled" title="">
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <attributedString key="attributedTitle"/>
                                                     <attributedString key="attributedSubtitle"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -212,6 +217,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BoA-Uw-K4g" secondAttribute="trailing" constant="50" id="Ymt-jO-5YK"/>
                             <constraint firstItem="uky-TX-CD2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aMa-Fd-vaR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uky-TX-CD2" secondAttribute="trailing" constant="20" id="gY5-YT-mIb"/>
+                            <constraint firstItem="uky-TX-CD2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kV3-EG-AQX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BoA-Uw-K4g" secondAttribute="bottom" constant="20" id="qF1-0h-YeH"/>
                             <constraint firstItem="uky-TX-CD2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="zwP-aJ-h9Q"/>
                         </constraints>

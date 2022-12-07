@@ -9,7 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 	
-	var numberOfPairs: Int {  return buttonsArray.count % 2 == 0 ? buttonsArray.count / 2 : buttonsArray.count + 1 / 2 }
+	var numberOfPairs: Int {
+		return buttonsArray.count % 2 == 0 ? buttonsArray.count / 2 : buttonsArray.count + 1 / 2 }
 	
 	lazy var game = Concentration(numberOfPairsOfCards: numberOfPairs )
 	

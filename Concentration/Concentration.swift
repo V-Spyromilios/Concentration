@@ -11,9 +11,28 @@ class Concentration
 {
 	var cards = [Card]()
 	
-	var indexOfOneCardFaceUp: Int?
+	var indexOfOneCardFaceUp: Int? {
+		get {
+			var foundIndex: Int? = nil
+			for index in cards.indices {
+				if cards[index].isFaceUp {
+					if foundIndex == nil {
+						foundIndex = index
+					} else {
+						return nil
+					}
+				}
+			}
+			return foundIndex
+		}
+		set(newValue) {
+			for index in cards.indices {
+				cards[index].isFaceUp = (index == newValue) // all cards faceDown unless there is one (newValue) then  'index==newValue'  returns true.
+			}
+		}
+	}
 	var randomArray = [Int]()
-
+	
 	func chooseCard(at index: Int) {
 		if !cards[index].isMatched {
 			if let matchIndex = indexOfOneCardFaceUp, matchIndex != index {
@@ -23,25 +42,20 @@ class Concentration
 					cards[index].isMatched = true
 				}
 				cards[index].isFaceUp = true
-				indexOfOneCardFaceUp = nil
+				
 			} else {
-				//no cards match or 2 cards are faceUp
-				for index in cards.indices {
-					cards[index].isFaceUp = false
-				}
-				cards[index].isFaceUp = true
 				indexOfOneCardFaceUp = index
 			}
 		}
 	}
-
+	
 	init(numberOfPairsOfCards: Int) {
 		let counter = numberOfPairsOfCards - 1
 		for _ in 0...counter {
 			let card = Card()
 			cards.append(card)
 			cards.append(card)
-			}
+		}
 		cards.shuffle()
 	}
 }
