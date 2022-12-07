@@ -9,9 +9,9 @@ import Foundation
 
 class Concentration
 {
-	var cards = [Card]()
+	private(set) var cards = [Card]()
 	
-	var indexOfOneCardFaceUp: Int? {
+	private var indexOfOneCardFaceUp: Int? {
 		get {
 			var foundIndex: Int? = nil
 			for index in cards.indices {
@@ -31,9 +31,11 @@ class Concentration
 			}
 		}
 	}
-	var randomArray = [Int]()
+	private var randomArray = [Int]()
 	
 	func chooseCard(at index: Int) {
+		assert(cards.indices.contains(index), "ASSERT: Concentration.chooseCard() called with \(index)")
+
 		if !cards[index].isMatched {
 			if let matchIndex = indexOfOneCardFaceUp, matchIndex != index {
 				// check if they match
@@ -50,6 +52,8 @@ class Concentration
 	}
 	
 	init(numberOfPairsOfCards: Int) {
+		assert(numberOfPairsOfCards > 0, "ASSERT: Concertation.init - numbers of pairs of cards < 0")
+
 		let counter = numberOfPairsOfCards - 1
 		for _ in 0...counter {
 			let card = Card()
