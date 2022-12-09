@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Concentration
+struct Concentration
 {
 	private(set) var cards = [Card]()
 	
@@ -33,13 +33,13 @@ class Concentration
 	}
 	private var randomArray = [Int]()
 	
-	func chooseCard(at index: Int) {
+	mutating func chooseCard(at index: Int) {
 		assert(cards.indices.contains(index), "ASSERT: Concentration.chooseCard() called with \(index)")
 
 		if !cards[index].isMatched {
 			if let matchIndex = indexOfOneCardFaceUp, matchIndex != index {
 				// check if they match
-				if cards[matchIndex].identifier == cards[index].identifier {
+				if cards[matchIndex] == cards[index] {  //Can compare Card(s) directly as they conform to Equatable
 					cards[matchIndex].isMatched = true
 					cards[index].isMatched = true
 				}
@@ -63,4 +63,3 @@ class Concentration
 		cards.shuffle()
 	}
 }
-

@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct Card
+struct Card: Hashable
 {
+	
 	var isFaceUp = false
 	var isMatched = false
-	var identifier: Int
+	private var identifier: Int
 
 	private static var Identifier = 0
 
@@ -19,8 +20,18 @@ struct Card
 		Identifier += 1
 		return Identifier
 	}
+	
+	func getIdentifier()-> Int {
+		return self.identifier
+	}
+	
+	/// explicit implemetation of == and hashValue is not required in this version of Swift!
+	static func ==(lhs:Card, rhs: Card)-> Bool {
+		return lhs.identifier == rhs.identifier
+	}
 
 	init() {
 		self.identifier = Card.getUniqueIdentifier()
 	}
 }
+
