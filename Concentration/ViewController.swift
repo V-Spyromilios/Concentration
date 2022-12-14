@@ -71,7 +71,7 @@ class ViewController: UIViewController {
 			if card.isFaceUp {
 				button.setTitle(chooseEmoji(for: card), for: .normal)
 //				button.titleLabel?.font = UIFont(name: "Impact", size: 40)
-//				button.titleLabel?.adjustsFontSizeToFitWidth = true
+				button.titleLabel?.adjustsFontSizeToFitWidth = true
 				button.backgroundColor = .white
 			}
 			else {

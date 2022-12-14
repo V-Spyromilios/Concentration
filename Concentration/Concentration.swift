@@ -12,34 +12,25 @@ struct Concentration
 	private(set) var cards = [Card]()
 	
 	private var indexOfOneCardFaceUp: Int? {
-		get {
-			var foundIndex: Int? = nil
-			for index in cards.indices {
-				if cards[index].isFaceUp {
-					if foundIndex == nil {
-						foundIndex = index
-					} else {
-						return nil
-					}
-				}
-			}
-			return foundIndex
+		get { return
+			cards.indices.filter { cards[$0].isFaceUp }.oneAndOnlyOne
+			// filter the indices based on the closure and then return type 'Element?'
 		}
+		
 		set(newValue) {
 			for index in cards.indices {
-				cards[index].isFaceUp = (index == newValue) // all cards faceDown unless there is one (newValue) then  'index==newValue'  returns true.
+				cards[index].isFaceUp = (index == newValue) // all cards faceDown unless there is one (newValue) then isFaceUp =   'index==newValue' which  returns true.
 			}
 		}
 	}
-	private var randomArray = [Int]()
 	
 	mutating func chooseCard(at index: Int) {
-		assert(cards.indices.contains(index), "ASSERT: Concentration.chooseCard() called with \(index)")
-
+		assert(cards.indices.contains(index), "ASSERT: Concentration.chooseCard() - called with \(index)")
+		
 		if !cards[index].isMatched {
 			if let matchIndex = indexOfOneCardFaceUp, matchIndex != index {
 				// check if they match
-				if cards[matchIndex] == cards[index] {  //Can compare Card(s) directly as they conform to Equatable
+				if cards[matchIndex] == cards[index] {  // Can compare Card(s) directly as they conform to Equatable
 					cards[matchIndex].isMatched = true
 					cards[index].isMatched = true
 				}
@@ -52,8 +43,8 @@ struct Concentration
 	}
 	
 	init(numberOfPairsOfCards: Int) {
-		assert(numberOfPairsOfCards > 0, "ASSERT: Concertation.init - numbers of pairs of cards < 0")
-
+		assert(numberOfPairsOfCards > 0, "ASSERT: Concertation.init() - called with \(numberOfPairsOfCards)")
+		
 		let counter = numberOfPairsOfCards - 1
 		for _ in 0...counter {
 			let card = Card()
@@ -61,5 +52,12 @@ struct Concentration
 			cards.append(card)
 		}
 		cards.shuffle()
+	}
+}
+
+
+extension Collection {
+	var oneAndOnlyOne: Element? {
+		return count == 1 ? first: nil
 	}
 }
